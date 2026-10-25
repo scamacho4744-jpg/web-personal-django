@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% load static %}
+{% block contenido %}
+<header class="masthead" style="background-image: url('{% static "img/home-bg.jpg" %}')">
+  <div class="overlay"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <div class="site-heading">
+          {% if persona %}
+            <h1>{{ persona.nombres }} {{ persona.apellidos }}</h1>
+            <span class="subheading">{{ persona.titulo_academico }}</span>
+          {% else %}
+            <h1>Web Personal</h1>
+            <span class="subheading">Agrega el registro Persona desde /admin/</span>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8 col-md-10 mx-auto">
+      {% if persona %}
+        <h2 class="section-heading">Bienvenido</h2>
+        <p>{{ persona.dedicacion }}</p>
+        <p>{{ persona.biografia|truncatewords:35 }}</p>
+      {% endif %}
+    </div>
+  </div>
+</div>
+<hr>
+{% endblock %}

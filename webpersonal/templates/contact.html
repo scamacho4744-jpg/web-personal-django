@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% load static %}
+{% block contenido %}
+<header class="masthead" style="background-image: url('{% static "img/contact-bg.jpg" %}')">
+  <div class="overlay"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <div class="site-heading">
+          <h1>Contacto</h1>
+          <span class="subheading">Información de contacto</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8 col-md-10 mx-auto">
+      {% if persona %}
+        <p>Puedes comunicarte conmigo utilizando los siguientes datos:</p>
+        <p><b>Correo electrónico:</b> <a href="mailto:{{ persona.correo_electronico }}">{{ persona.correo_electronico }}</a></p>
+        <p><b>Teléfono:</b> {{ persona.telefono }}</p>
+        <p><b>Dirección:</b> {{ persona.direccion }}</p>
+      {% else %}
+        <p>No existe todavía un registro de Persona. Créalo desde el administrador.</p>
+      {% endif %}
+    </div>
+  </div>
+</div>
+<hr>
+{% endblock %}

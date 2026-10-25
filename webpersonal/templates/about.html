@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% load static %}
+{% block contenido %}
+<header class="masthead" style="background-image: url('{% static "img/about-bg.jpg" %}')">
+  <div class="overlay"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <div class="site-heading">
+          <h1>Acerca de</h1>
+          <span class="subheading">Biografía</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-3 col-md-4 offset-lg-1">
+      <img class="img-fluid avatar" src="{% static 'img/avatar.jpeg' %}" alt="Foto de perfil">
+    </div>
+    <div class="col-lg-7 col-md-8">
+      {% if persona %}
+        <h2 class="section-heading">{{ persona.nombres }} {{ persona.apellidos }}</h2>
+        <p><strong>Título académico:</strong> {{ persona.titulo_academico }}</p>
+        <p>{{ persona.biografia }}</p>
+        <p><strong>Dedicación:</strong> {{ persona.dedicacion }}</p>
+        <p><strong>Dirección:</strong> {{ persona.direccion }}</p>
+      {% else %}
+        <p>No existe todavía un registro de Persona. Créalo desde el administrador.</p>
+      {% endif %}
+    </div>
+  </div>
+</div>
+<hr>
+{% endblock %}
